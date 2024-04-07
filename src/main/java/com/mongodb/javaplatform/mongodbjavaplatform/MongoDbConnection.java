@@ -9,29 +9,29 @@ import com.mongodb.client.MongoClients;
 
 public class MongoDbConnection {
 
-    public static void main(String[] args) {
-        MongoClient mongoClient = connection();
-        System.out.println("==============");
-        mongoClient.listDatabaseNames().forEach(val -> System.out.println(val));
-        System.out.println("=============");
+    private MongoDbConnection() {
     }
 
-    static MongoClient connection() {
-        MongoClient mongoClient = null;
-        try {
-            ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
+    public static MongoClient INSTANCE = null;
 
-            MongoClientSettings clientSettings = MongoClientSettings.builder()
-                    .applyConnectionString(connectionString)
-                    .serverApi(ServerApi.builder().version(ServerApiVersion.V1).build())
-                    .build();
+    public static MongoClient getInstance() {
+        if (INSTANCE == null) {
+            try {
+                ConnectionString connectionString = new ConnectionString("mongodb://localhost:27017");
 
-            mongoClient = MongoClients.create(clientSettings);
-        } catch (Exception exc) {
-            System.out.println(exc);
+                MongoClientSettings clientSettings = MongoClientSettings
+                        .builder()
+                        .applyConnectionString(connectionString)
+                        .serverApi(ServerApi.builder().version(ServerApiVersion.V1).build())
+                        .build();
+
+                INSTANCE = MongoClients.create(clientSettings);
+            } catch (Exception exc) {
+                System.out.println(exc);
+            }
         }
 
-
-        return mongoClient;
+        return INSTANCE;
     }
+
 }
