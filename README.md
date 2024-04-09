@@ -11,4 +11,7 @@ Basics for the java developers to get hand dirty on MongoDB.
 8. MongodbJavaPlatformApplicationTests.updateManyRecord() :: Updates many records
 9. MongodbJavaPlatformApplicationTests.deleteOneRecord() :: Delete one record
 10. MongodbJavaPlatformApplicationTests.deleteManyRecord() :: Delete many records
+11. MongodbJavaPlatformApplicationTests.queryingOnArrayElements() :: find by matchElem
+11. MongodbJavaPlatformApplicationTests.findByAndOrOperators() :: find by operators :: and, or 
+11. MongodbJavaPlatformApplicationTests.aggregationMatchGroup() :: find by aggregation 
 
